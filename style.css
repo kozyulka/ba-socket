@@ -1,0 +1,167 @@
+:root {
+    --blue: #cdefff;
+}
+
+main {
+    margin: 10px;
+}
+
+/* LOGIN WINDOW */
+
+.login-window {
+    display: none;
+    border: 1px solid black;
+    min-height: 200px;
+    width: 400px;
+    text-align: center;
+    font-size: 24px;
+    margin: 240px auto auto;
+}
+
+.login-window-button {
+    margin: 20px;
+    width: 150px;
+    font-size: 20px;
+    padding: 10px;
+    background-color: var(--blue);
+    border: none;
+}
+
+.login-window-item {
+    margin: 20px;
+}
+
+.login-window-item input {
+    width: 70%;
+    height: 25px;
+    margin-top: 10px;
+    font-size: 17px;
+}
+
+/* CHAT */
+
+.chat-wrapper {
+    border: 1px solid black;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.chat {
+    display: flex;
+    flex: 1;
+}
+
+.chat-section-name {
+    border-bottom: 1px solid black;
+    text-align: center;
+    background-color: var(--blue);
+    padding: 10px;
+}
+
+.chat-main {
+    width: 70%;
+
+}
+
+.chat-members {
+    width: 30%;
+    border-right: 1px solid black;
+}
+
+.chat-member {
+    border-bottom: 1px solid gray;
+    margin: 5px;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.chat-member-info-nickname {
+    font-size: 20px;
+    font-weight: 600;
+    color: purple;
+    margin-top: 5px;
+}
+
+.chat-member-label-color {
+    display: inline-block;
+    position: relative;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    border: 1px solid gray;
+    top: 2px;
+}
+
+.chat-member-label-color.online {
+    background-color: green;
+    border-color: green;
+}
+
+.chat-member-label-color.appeared {
+    background-color: #8bc34a;
+    border-color: #8bc34a;
+}
+
+.chat-member-label-color.left {
+    background-color: orange;
+    border-color: orange;
+}
+
+
+
+.chat-message-wrapper {
+    margin: 10px;
+}
+
+.chat-message {
+    width: 400px;
+    background-color: #dcdada;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.chat-message.outgoing {
+    float: right;
+    background-color: #fdf0c9;
+}
+
+.chat-message-info {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px dashed gray;
+    padding: 5px;
+}
+
+.chat-message-info-sender {
+    color: purple;
+    font-weight: 600;
+}
+
+.chat-message-text {
+    padding: 5px;
+}
+
+.chat-send-message {
+    display: flex;
+}
+
+.chat-send-message-text {
+    flex: 1;
+}
+
+.chat-send-message-text textarea{
+    width: 100%;
+    height: 100px;
+    text-align: start;
+    font-size: 17px;
+}
+
+.chat-send-message-button {
+    border: none;
+    background-color: var(--blue);
+    width: 100px;
+    font-size: 24px;
+}

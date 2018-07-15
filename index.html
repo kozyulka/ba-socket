@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="eng">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Socket.io</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="reset.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <main>
+        <div class="login-window">
+            <div class="login-window-item">
+                <div class=login-window-item-text>
+                    Enter your name:
+                </div>
+                <input type="text" name="name">
+            </div>
+            <div class="login-window-item">
+                <div class=login-window-item-text>
+                    Enter your nickname:
+                </div>
+                <input type="text" name="nickname">
+            </div>
+            <button class="login-window-button">Login</button>
+        </div>
+
+        <div class="chat-wrapper">
+            <div class="chat">
+                <div class="chat-members">
+                    <div class="chat-section-name">Chat members</div>
+                    <div class="chat-member">
+                        <div class="chat-member-info">
+                            <div class="chat-member-info-name">John</div>
+                            <div class="chat-member-info-nickname">@trololo</div>
+                        </div>
+                        <div class="chat-member-label">
+                            <span class="chat-member-label-color online"></span>
+                            <span class="chat-member-label-status">online</span>
+                        </div>
+                    </div>
+                    <div class="chat-member">
+                        <div class="chat-member-info">
+                            <div class="chat-member-info-name">John</div>
+                            <div class="chat-member-info-nickname">@trololo</div>
+                        </div>
+                        <div class="chat-member-label">
+                            <span class="chat-member-label-color"></span>
+                            <span class="chat-member-label-status">offline</span>
+                        </div>
+                    </div>
+                    <div class="chat-member">
+                        <div class="chat-member-info">
+                            <div class="chat-member-info-name">John</div>
+                            <div class="chat-member-info-nickname">@trololo</div>
+                        </div>
+                        <div class="chat-member-label">
+                                <span class="chat-member-label-color appeared"></span>
+                            <span class="chat-member-label-status">just appeared</span>
+                        </div>
+                    </div>
+                    <div class="chat-member">
+                            <div class="chat-member-info">
+                                <div class="chat-member-info-name">John</div>
+                                <div class="chat-member-info-nickname">@trololo</div>
+                            </div>
+                            <div class="chat-member-label">
+                                <span class="chat-member-label-color left"></span>
+                                <span class="chat-member-label-status">just left</span>
+                            </div>
+                        </div>
+                </div>
+                <div class="chat-main">
+                    <div class="chat-section-name">Chat main window</div>
+                    <div class="chat-main-messages">
+                        <div class="chat-message-wrapper">
+                            <div class="chat-message">
+                                <div class="chat-message-info">
+                                    <div class="chat-message-info-sender">@trololo</div>
+                                    <div class="chat-message-info-time">11:00</div>
+                                </div>
+                                <div class="chat-message-text">Hello!</div>
+                            </div>
+                        </div>
+                        <div class="chat-message-wrapper">
+                            <div class="chat-message">
+                                <div class="chat-message-info">
+                                    <div class="chat-message-info-sender">@trololo</div>
+                                    <div class="chat-message-info-time">11:00</div>
+                                </div>
+                                <div class="chat-message-text">Hello!</div>
+                            </div>
+                        </div>
+                        <div class="chat-message-wrapper">
+                            <div class="chat-message">
+                                <div class="chat-message-info">
+                                    <div class="chat-message-info-sender">@trololo</div>
+                                    <div class="chat-message-info-time">11:00</div>
+                                </div>
+                                <div class="chat-message-text">Hello!</div>
+                            </div>
+                        </div>
+                        <div class="chat-message-wrapper">
+                            <div class="chat-message outgoing">
+                                <div class="chat-message-info">
+                                    <div class="chat-message-info-sender">@memek</div>
+                                    <div class="chat-message-info-time">11:30</div>
+                                </div>
+                                <div class="chat-message-text">Hi!</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-send-message">
+                <div class="chat-send-message-text">
+                    <textarea rows="4"></textarea>
+                </div>
+                <button class="chat-send-message-button">Send</button>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>
