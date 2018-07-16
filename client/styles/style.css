@@ -9,7 +9,6 @@ main {
 /* LOGIN WINDOW */
 
 .login-window {
-    display: none;
     border: 1px solid black;
     min-height: 200px;
     width: 400px;
@@ -41,9 +40,9 @@ main {
 /* CHAT */
 
 .chat-wrapper {
+    display: none;
     border: 1px solid black;
     min-height: 600px;
-    display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
@@ -53,24 +52,17 @@ main {
     flex: 1;
 }
 
-.chat-section-name {
-    border-bottom: 1px solid black;
-    text-align: center;
-    background-color: var(--blue);
-    padding: 10px;
-}
-
 .chat-main {
     width: 70%;
 
 }
 
-.chat-members {
+.chat-users {
     width: 30%;
     border-right: 1px solid black;
 }
 
-.chat-member {
+.chat-user {
     border-bottom: 1px solid gray;
     margin: 5px;
     padding: 5px;
@@ -78,14 +70,14 @@ main {
     justify-content: space-between;
 }
 
-.chat-member-info-nickname {
+.chat-user-info-nickname {
     font-size: 20px;
     font-weight: 600;
     color: purple;
     margin-top: 5px;
 }
 
-.chat-member-label-color {
+.chat-user-label-color {
     display: inline-block;
     position: relative;
     height: 10px;
@@ -95,17 +87,17 @@ main {
     top: 2px;
 }
 
-.chat-member-label-color.online {
+.chat-user-label-color.online {
     background-color: green;
     border-color: green;
 }
 
-.chat-member-label-color.appeared {
+.chat-user-label-color.appeared {
     background-color: #8bc34a;
     border-color: #8bc34a;
 }
 
-.chat-member-label-color.left {
+.chat-user-label-color.left {
     background-color: orange;
     border-color: orange;
 }
@@ -122,9 +114,9 @@ main {
 }
 
 .chat-message.outgoing {
-    float: right;
     background-color: #fdf0c9;
-    margin: 5px;
+    margin-right: 0;
+    margin-left: auto;
 }
 
 .chat-message-info {
@@ -141,6 +133,8 @@ main {
 
 .chat-message-text {
     padding: 5px;
+    word-wrap: break-word;
+    line-height: 20px;
 }
 
 .chat-send-message {

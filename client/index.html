@@ -11,69 +11,67 @@
 
 <body>
     <main>
-        <div class="login-window">
+        <div id="loginWindow" class="login-window">
             <div class="login-window-item">
                 <div class=login-window-item-text>
                     Enter your name:
                 </div>
-                <input type="text" name="name">
+                <input id="userName" type="text" name="name">
             </div>
             <div class="login-window-item">
                 <div class=login-window-item-text>
                     Enter your nickname:
                 </div>
-                <input type="text" name="nickname">
+                <input id="userNickname" type="text" name="nickname">
             </div>
-            <button class="login-window-button">Login</button>
+            <button class="login-window-button" onclick="login()">Login</button>
         </div>
 
-        <div class="chat-wrapper">
+        <div id="chatWrapper" class="chat-wrapper">
             <div class="chat">
-                <div class="chat-members">
-                    <div class="chat-section-name">Chat members</div>
-                    <div class="chat-member">
-                        <div class="chat-member-info">
-                            <div class="chat-member-info-name">John</div>
-                            <div class="chat-member-info-nickname">@trololo</div>
+                <div id="users" class="chat-users">
+                    <!-- <div class="chat-user">
+                        <div class="chat-user-info">
+                            <div class="chat-user-info-name">John</div>
+                            <div class="chat-user-info-nickname">@trololo</div>
                         </div>
-                        <div class="chat-member-label">
-                            <span class="chat-member-label-color online"></span>
-                            <span class="chat-member-label-status">online</span>
-                        </div>
-                    </div>
-                    <div class="chat-member">
-                        <div class="chat-member-info">
-                            <div class="chat-member-info-name">John</div>
-                            <div class="chat-member-info-nickname">@trololo</div>
-                        </div>
-                        <div class="chat-member-label">
-                            <span class="chat-member-label-color"></span>
-                            <span class="chat-member-label-status">offline</span>
+                        <div class="chat-user-label">
+                            <span class="chat-user-label-color online"></span>
+                            <span class="chat-user-label-status">online</span>
                         </div>
                     </div>
-                    <div class="chat-member">
-                        <div class="chat-member-info">
-                            <div class="chat-member-info-name">John</div>
-                            <div class="chat-member-info-nickname">@trololo</div>
+                    <div class="chat-user">
+                        <div class="chat-user-info">
+                            <div class="chat-user-info-name">John</div>
+                            <div class="chat-user-info-nickname">@trololo</div>
                         </div>
-                        <div class="chat-member-label">
-                                <span class="chat-member-label-color appeared"></span>
-                            <span class="chat-member-label-status">just appeared</span>
+                        <div class="chat-user-label">
+                            <span class="chat-user-label-color"></span>
+                            <span class="chat-user-label-status">offline</span>
                         </div>
                     </div>
-                    <div class="chat-member">
-                            <div class="chat-member-info">
-                                <div class="chat-member-info-name">John</div>
-                                <div class="chat-member-info-nickname">@trololo</div>
+                    <div class="chat-user">
+                        <div class="chat-user-info">
+                            <div class="chat-user-info-name">John</div>
+                            <div class="chat-user-info-nickname">@trololo</div>
+                        </div>
+                        <div class="chat-user-label">
+                                <span class="chat-user-label-color appeared"></span>
+                            <span class="chat-user-label-status">just appeared</span>
+                        </div>
+                    </div>
+                    <div class="chat-user">
+                            <div class="chat-user-info">
+                                <div class="chat-user-info-name">John</div>
+                                <div class="chat-user-info-nickname">@trololo</div>
                             </div>
-                            <div class="chat-member-label">
-                                <span class="chat-member-label-color left"></span>
-                                <span class="chat-member-label-status">just left</span>
+                            <div class="chat-user-label">
+                                <span class="chat-user-label-color left"></span>
+                                <span class="chat-user-label-status">just left</span>
                             </div>
-                        </div>
+                        </div> -->
                 </div>
                 <div class="chat-main">
-                    <div class="chat-section-name">Chat main window</div>
                     <div id="chatMessages" class="chat-main-messages"></div>
                 </div>
             </div>

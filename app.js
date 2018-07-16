@@ -30,21 +30,14 @@ app.post('/login', (req, res) => {
     res.end();
 });
 
-// app.post('/chat', (req, res) => {
-//     const message = {
-//         sender: req.body.sender,
-//         text: req.body.text,
-//     };
-
-//     chatManager.addMessage(message);
-//     res.end();
-// });
-
 io.on('connection', (socket) => {
-    console.log('New connection');
+    const users = chatManager.getUsers();
+
+    io.emit('users', users);
 
     socket.on('message', (message) => {
         socket.broadcast.emit('message', message);
+        chatManager.addMessage(message);
     });
 });
 

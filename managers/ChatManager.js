@@ -3,7 +3,7 @@
 class ChatManager {
     constructor() {
         this.users = [];
-        // this.messages = [];
+        this.messages = [];
     }
 
     isUserExisting(user) {
@@ -25,14 +25,20 @@ class ChatManager {
         });
     }
 
-    // addMessage(message) {
-    //     this.messages.push({
-    //         sender: message.sender,
-    //         time: Date.now(),
-    //         text: message.text
-    //     });
-    //     console.log(this.messages);
-    // }
+    getUsers() {
+        return this.users;
+    }
+
+    addMessage(message) {
+        this.messages.push({
+            sender: message.sender,
+            text: message.text
+        });
+
+        if (this.messages.length > 5) {
+            this.messages.shift();
+        }
+    }
 }
 
 module.exports = ChatManager;
