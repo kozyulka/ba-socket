@@ -4,7 +4,7 @@ const express = require('express');
 const http = require('http');
 const socket = require('socket.io');
 const bodyParser = require('body-parser');
-const ChatManager = require('./managers/ChatManager');
+const ChatManager = require('./ChatManager');
 
 const app = express();
 const server = http.Server(app);
@@ -13,7 +13,7 @@ const chatManager = new ChatManager();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static('client'));
+app.use(express.static('../client'));
 
 app.post('/login', (req, res) => {
     const user = {
