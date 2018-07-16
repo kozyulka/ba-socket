@@ -110,8 +110,6 @@ main {
     border-color: orange;
 }
 
-
-
 .chat-message-wrapper {
     margin: 10px;
 }
@@ -126,6 +124,7 @@ main {
 .chat-message.outgoing {
     float: right;
     background-color: #fdf0c9;
+    margin: 5px;
 }
 
 .chat-message-info {

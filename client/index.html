@@ -6,8 +6,7 @@
     <title>Socket.io</title>
     <link rel="stylesheet" type="text/css" media="screen" href="styles/reset.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="styles/style.css" />
-    <script src="node_modules/socket.io-client/dist/socket.io.js"></script>
-    <script src="index.js"></script>
+
 </head>
 
 <body>
@@ -75,55 +74,20 @@
                 </div>
                 <div class="chat-main">
                     <div class="chat-section-name">Chat main window</div>
-                    <div class="chat-main-messages">
-                        <div class="chat-message-wrapper">
-                            <div class="chat-message">
-                                <div class="chat-message-info">
-                                    <div class="chat-message-info-sender">@trololo</div>
-                                    <div class="chat-message-info-time">11:00</div>
-                                </div>
-                                <div class="chat-message-text">Hello!</div>
-                            </div>
-                        </div>
-                        <div class="chat-message-wrapper">
-                            <div class="chat-message">
-                                <div class="chat-message-info">
-                                    <div class="chat-message-info-sender">@trololo</div>
-                                    <div class="chat-message-info-time">11:00</div>
-                                </div>
-                                <div class="chat-message-text">Hello!</div>
-                            </div>
-                        </div>
-                        <div class="chat-message-wrapper">
-                            <div class="chat-message">
-                                <div class="chat-message-info">
-                                    <div class="chat-message-info-sender">@trololo</div>
-                                    <div class="chat-message-info-time">11:00</div>
-                                </div>
-                                <div class="chat-message-text">Hello!</div>
-                            </div>
-                        </div>
-                        <div class="chat-message-wrapper">
-                            <div class="chat-message outgoing">
-                                <div class="chat-message-info">
-                                    <div class="chat-message-info-sender">@memek</div>
-                                    <div class="chat-message-info-time">11:30</div>
-                                </div>
-                                <div class="chat-message-text">Hi!</div>
-                            </div>
-                        </div>
-                    </div>
+                    <div id="chatMessages" class="chat-main-messages"></div>
                 </div>
             </div>
             <div class="chat-send-message">
                 <div class="chat-send-message-text">
-                    <textarea rows="4"></textarea>
+                    <textarea id="myMessage" rows="4"></textarea>
                 </div>
-                <button class="chat-send-message-button">Send</button>
+                <button id="sendMessageButton" class="chat-send-message-button" onclick="sendMessage()">Send</button>
             </div>
         </div>
     </main>
 
+    <script src="node_modules/socket.io-client/dist/socket.io.js"></script>
+    <script src="index.js"></script>
 </body>
 
 </html>

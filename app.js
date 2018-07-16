@@ -44,7 +44,7 @@ io.on('connection', (socket) => {
     console.log('New connection');
 
     socket.on('message', (message) => {
-        console.log(message);
+        socket.broadcast.emit('message', message);
     });
 });
 
