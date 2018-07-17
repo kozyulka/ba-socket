@@ -16,19 +16,27 @@ const scrollToBottom = (div) => {
     div.scrollTop = div.scrollHeight - div.clientHeight;
 }
 
-const addMessage = (messageData) => {
-    const message = {
-        text: messageData.text,
-        sender: messageData.sender,
-        time: moment(messageData.time).format("ddd, MM/D/YY, HH:mm:ss"),
-    };
-
+const addMessage = (message) => {
     messages.push(message);
+
+    if (messages.length > 100) {
+        const messageToRemove = messages.shift();
+
+        removeMessage(messageToRemove);
+    }
+
     showMessage(message);
+};
+
+const removeMessage = (message) => {
+    const element = document.getElementById(`${message.sender}-${message.time}`);
+
+    element.remove();
 };
 
 const showMessage = (message) => {
     const element = document.createElement('div');
+    const id = `${message.sender}-${message.time}`;
     let className = 'chat-message';
 
     if (message.sender === user.nickname) {
@@ -37,12 +45,13 @@ const showMessage = (message) => {
         className += ' service';
     }
 
+    element.id = id;
     element.className = 'chat-message-wrapper';
     element.innerHTML = `
         <div class="${className}">
             <div class="chat-message-info">
                 <div class="chat-message-info-sender">@${message.sender}</div>
-                <div class="chat-message-info-time">${message.time}</div>
+                <div class="chat-message-info-time">${moment(message.time).format("ddd, MM/D/YY, HH:mm:ss")}</div>
             </div>
             <div class="chat-message-text">${message.text}</div>
         </div>
@@ -56,6 +65,7 @@ const showMessage = (message) => {
 const showHistory = (messagesHistory) => {
     const html = messagesHistory
         .map((message) => {
+            const id = `${message.sender}-${message.time}`;
             let className = 'chat-message';
 
             if (message.sender === user.nickname) {
@@ -63,7 +73,7 @@ const showHistory = (messagesHistory) => {
             }
 
             return `
-                <div class="chat-message-wrapper">
+                <div id="${id}" class="chat-message-wrapper">
                     <div class="${className}">
                         <div class="chat-message-info">
                             <div class="chat-message-info-sender">@${message.sender}</div>
@@ -160,16 +170,17 @@ const addTypingUser = (nickname) => {
  };
 
 const showTyping = () => {
-    const html = typingUsers
-        .map((user) => {
-            return `
-                <div class="typing-user">
-                    <span class="typing-user-nickname">@${user.nickname}</span>
-                    <span class="typing-user-text">is typing...</span>
-                </div>
-            `;
-        })
-        .join('');
+    if (typingUsers.length === 0) {
+        return;
+    }
+
+    const users = typingUsers.map((user) => `<span class="typing-user-nickname">@${user.nickname}</span>`);
+    const html = `
+        <div class="typing-user">
+            ${users.join(', ')}
+            <span class="typing-user-text"> typing...</span>
+        </div>
+    `;
 
     typingUsersContainer.innerHTML = html;
 };

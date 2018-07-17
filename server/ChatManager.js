@@ -32,7 +32,7 @@ class ChatManager {
     addMessage(message) {
         this.messages.push(message);
 
-        if (this.messages.length > 5) {
+        if (this.messages.length > 100) {
             this.messages.shift();
         }
     }
