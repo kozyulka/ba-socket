@@ -1,5 +1,6 @@
 main {
     margin: 10px;
+    font-family: 'Roboto', sans-serif;
 }
 
 /* LOGIN WINDOW */
@@ -61,7 +62,7 @@ main {
     border-bottom: 1px solid #dcdbdb;
     color: #656565;
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 700;
     text-align: center;
 }
 
@@ -81,7 +82,7 @@ main {
     border-bottom: 1px solid #dcdbdb;
     color: #656565;
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 700;
     text-align: center;
 }
 
@@ -103,7 +104,7 @@ main {
 
 .chat-user-info-nickname {
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 700;
     color: #0376f4;
     margin-top: 5px;
 }
@@ -156,20 +157,26 @@ main {
 
 .chat-message-info {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     border-bottom: 1px dashed #dcdbdb;
     padding: 5px;
 }
 
+.chat-message-info-time {
+    color: #6d6d6d;
+    font-size: 14px;
+}
+
 .chat-message-info-sender {
     color: #0475f5;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .chat-message-text {
     padding: 5px;
     word-wrap: break-word;
     line-height: 20px;
+    color: #3a3939;
 }
 
 .chat-send-message {
@@ -208,6 +215,6 @@ main {
 }
 
 .typing-user-nickname {
-    font-weight: 600;
+    font-weight: 700;
     color: #636262;
 }

@@ -8,7 +8,6 @@ const userNameInput = document.getElementById('userName');
 const userNicknameInput = document.getElementById('userNickname');
 const messages = [];
 const user = {};
-
 let typingUsers = [];
 let currentTime = moment();
 let socket;
@@ -21,8 +20,11 @@ const addMessage = (messageData) => {
     const message = {
         text: messageData.text,
         sender: messageData.sender,
-        time: moment().format("dddd, MMMM Do YYYY, h:mm:ss a"),
+        time: moment(messageData.time).format("dddd, MMMM Do YYYY, h:mm:ss a"),
     };
+
+    console.log(messageData.time);
+
 
     messages.push(message);
     showMessage(message);
@@ -66,7 +68,7 @@ const showHistory = (messagesHistory) => {
                     <div class="${className}">
                         <div class="chat-message-info">
                             <div class="chat-message-info-sender">@${message.sender}</div>
-                            <div class="chat-message-info-time">${message.time}</div>
+                            <div class="chat-message-info-time">${moment(message.time).format("ddd, MM/D/YY, HH:mm:ss")}</div>
                         </div>
                         <div class="chat-message-text">${message.text}</div>
                     </div>
@@ -151,7 +153,8 @@ const showTyping = (typingUsers) => {
 const sendMessage = () => {
     const message = {
         sender: user.nickname,
-        text: messageInput.value
+        text: messageInput.value,
+        time: Date.now()
     };
 
     messageInput.value = '';
