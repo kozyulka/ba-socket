@@ -54,6 +54,7 @@ io.on('connection', (socket) => {
         const users = chatManager.getUsers();
 
         socket.broadcast.emit('users', users);
+        socket.broadcast.emit('disconnected', nickname);
     });
 });
 

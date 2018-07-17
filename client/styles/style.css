@@ -143,7 +143,7 @@ main {
 
 .chat-message {
     width: 300px;
-    background-color: #dcdada;
+    background-color: #e3f1fd;
     border-radius: 5px;
     padding: 10px;
 }
@@ -152,6 +152,11 @@ main {
     background-color: #fdf0c9;
     margin-right: 0;
     margin-left: auto;
+}
+
+.chat-message.service {
+    margin: auto;
+    background-color: #dcdada;
 }
 
 .chat-message-info {

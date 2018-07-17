@@ -33,6 +33,8 @@ const showMessage = (message) => {
 
     if (message.sender === user.nickname) {
         className += ' outgoing';
+    } else if (message.sender === 'SUPER CHAT') {
+        className += ' service';
     }
 
     element.className = 'chat-message-wrapper';
@@ -178,6 +180,16 @@ messageInput.addEventListener('keydown', (event) => {
     socket.emit('typing', user.nickname);
 });
 
+const showDisconnectMessage = (nickname) => {
+    const message = {
+        text: `user @${nickname} left chat`,
+        sender: 'SUPER CHAT',
+        time: Date.now(),
+    };
+
+    addMessage(message);
+};
+
 const startChat = () => {
     socket = io.connect('', {
         query: `nickname=${user.nickname}`,
@@ -194,6 +206,7 @@ const startChat = () => {
     });
     socket.on('history', showHistory);
     socket.on('typing', addTypingUser);
+    socket.on('disconnected', showDisconnectMessage);
 
     setInterval(() => showUsers(), 5000);
 };
