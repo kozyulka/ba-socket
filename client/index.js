@@ -190,6 +190,10 @@ const showTyping = () => {
 };
 
 const sendMessage = () => {
+    if (messageInput.value.trim().length === 0) {
+        return;
+    }
+
     const message = {
         sender: user.nickname,
         text: messageInput.value,
@@ -205,7 +209,8 @@ const sendMessage = () => {
 messageInput.addEventListener('keydown', (event) => {
     if (event.keyCode === 13) {
         event.preventDefault();
-        sendMessage();
+
+        return sendMessage();
     }
 
     socket.emit('typing', user.nickname);
@@ -243,6 +248,16 @@ const startChat = () => {
 };
 
 const login = () => {
+    if (userNameInput.value.trim().length < 2) {
+        alert('User name cannot be shorter than 2 symbols');
+        return;
+    }
+
+    if (userNicknameInput.value.trim().length < 4) {
+        alert('User name cannot be shorter than 4 symbols');
+        return;
+    }
+
     const data = {
         name: userNameInput.value,
         nickname: userNicknameInput.value,
@@ -258,6 +273,7 @@ const login = () => {
         }
     }).then((response) => {
         if (response.status === 403) {
+            alert('User with this nickname already exists');
             return;
         }
 

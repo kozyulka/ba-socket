@@ -3,6 +3,11 @@ main {
     font-family: 'Roboto', sans-serif;
 }
 
+textarea {
+    resize: none;
+    display: block;
+}
+
 /* LOGIN WINDOW */
 
 .login-window {
@@ -208,8 +213,6 @@ main {
     color: #efefef;
     width: 100px;
     font-size: 24px;
-    border-radius: 5px;
-
 }
 
 .typing-users {
