@@ -126,18 +126,34 @@ const showUsers = () => {
 };
 
 const addTypingUser = (nickname) => {
-    if (!typingUsers.includes(nickname)) {
-        typingUsers.push(nickname);
+    for (let index = 0; index < typingUsers.length; index++) {
+        if (typingUsers[index].nickname === nickname) {
+            clearTimeout(typingUsers[index].timeout);
+
+            typingUsers[index].timeout = setTimeout(() => {
+                removeTypingUser(nickname);
+            }, 1500);
+
+            return;
+        }
     }
+
+    typingUsers.push({
+        nickname,
+        timeout: setTimeout(() => {
+            removeTypingUser(nickname);
+        }, 1500),
+    });
 
     showTyping();
 };
 
  const removeTypingUser = (nickname) => {
-    const index = typingUsers.indexOf(nickname);
-
-    if (index !== -1) {
-        typingUsers.splice(index, 1);
+    for (let index = typingUsers.length - 1; index >= 0; index--) {
+        if (typingUsers[index].nickname === nickname) {
+            typingUsers.splice(index, 1);
+            break;
+        }
     }
 
     showTyping();
@@ -147,11 +163,11 @@ const showTyping = () => {
     const html = typingUsers
         .map((user) => {
             return `
-            <div class="typing-user">
-                <span class="typing-user-nickname">@${user}</span>
-                <span class="typing-user-text">is typing...</span>
-            </div>
-        `
+                <div class="typing-user">
+                    <span class="typing-user-nickname">@${user.nickname}</span>
+                    <span class="typing-user-text">is typing...</span>
+                </div>
+            `;
         })
         .join('');
 
