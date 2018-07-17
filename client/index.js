@@ -8,6 +8,7 @@ const userNameInput = document.getElementById('userName');
 const userNicknameInput = document.getElementById('userNickname');
 const messages = [];
 const user = {};
+let users = [];
 let typingUsers = [];
 let socket;
 
@@ -76,7 +77,7 @@ const showHistory = (messagesHistory) => {
     messagesContainer.innerHTML = html;
 };
 
-const showUsers = (users) => {
+const showUsers = () => {
     const currentTime = moment();
     const html = users
         .map((user) => {
@@ -186,9 +187,15 @@ const startChat = () => {
         addMessage(message);
         removeTypingUser(message.sender);
     });
-    socket.on('users', showUsers);
+    socket.on('users', (allUsers) => {
+        users = allUsers;
+
+        showUsers();
+    });
     socket.on('history', showHistory);
     socket.on('typing', addTypingUser);
+
+    setInterval(() => showUsers(), 5000);
 };
 
 const login = () => {
