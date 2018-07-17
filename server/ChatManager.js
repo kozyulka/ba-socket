@@ -39,6 +39,10 @@ class ChatManager {
             this.messages.shift();
         }
     }
+
+    getMessages() {
+        return this.messages;
+    }
 }
 
 module.exports = ChatManager;

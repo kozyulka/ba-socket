@@ -32,8 +32,10 @@ app.post('/login', (req, res) => {
 
 io.on('connection', (socket) => {
     const users = chatManager.getUsers();
+    const messages = chatManager.getMessages();
 
     io.emit('users', users);
+    io.emit('history', messages);
 
     socket.on('message', (message) => {
         socket.broadcast.emit('message', message);
