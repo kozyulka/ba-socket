@@ -40,7 +40,7 @@ const showMessage = (message) => {
     element.innerHTML = `
         <div class="${className}">
             <div class="chat-message-info">
-                <div class="chat-message-info-sender">${message.sender}</div>
+                <div class="chat-message-info-sender">@${message.sender}</div>
                 <div class="chat-message-info-time">${message.time}</div>
             </div>
             <div class="chat-message-text">${message.text}</div>
@@ -65,7 +65,7 @@ const showHistory = (messagesHistory) => {
                 <div class="chat-message-wrapper">
                     <div class="${className}">
                         <div class="chat-message-info">
-                            <div class="chat-message-info-sender">${message.sender}</div>
+                            <div class="chat-message-info-sender">@${message.sender}</div>
                             <div class="chat-message-info-time">${message.time}</div>
                         </div>
                         <div class="chat-message-text">${message.text}</div>
