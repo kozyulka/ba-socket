@@ -43,6 +43,8 @@ const showMessage = (message) => {
         className += ' outgoing';
     } else if (message.sender === 'SUPER CHAT') {
         className += ' service';
+    } else if (message.text.includes(`@${user.nickname}`)) {
+        className += ' personal';
     }
 
     element.id = id;
@@ -171,6 +173,8 @@ const addTypingUser = (nickname) => {
 
 const showTyping = () => {
     if (typingUsers.length === 0) {
+        typingUsersContainer.innerHTML = '';
+
         return;
     }
 

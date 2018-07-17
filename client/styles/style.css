@@ -159,6 +159,10 @@ main {
     background-color: #dcdada;
 }
 
+.chat-message.personal {
+    box-shadow: 1px 1px 10px 5px #f9e2a2;
+}
+
 .chat-message-info {
     display: flex;
     justify-content: space-between;
