@@ -42,6 +42,10 @@ io.on('connection', (socket) => {
         socket.broadcast.emit('message', message);
         chatManager.addMessage(message);
     });
+
+    socket.on('typing', (nickname) => {
+        socket.broadcast.emit('typing', nickname);
+    });
 });
 
 server.listen(8080, () => {

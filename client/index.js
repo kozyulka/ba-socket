@@ -2,11 +2,14 @@
 
 const messagesContainer = document.getElementById('chatMessages');
 const usersContainer = document.getElementById('users');
+const typingUsersContainer = document.getElementById('typingUsers');
 const messageInput = document.getElementById('myMessage');
 const userNameInput = document.getElementById('userName');
 const userNicknameInput = document.getElementById('userNickname');
 const messages = [];
 const user = {};
+
+let typingUsers = [];
 let currentTime = moment();
 let socket;
 
@@ -70,8 +73,6 @@ const showHistory = (messagesHistory) => {
 };
 
 const showUsers = (users) => {
-
-
     const html = users
         .map((user) => {
             const timeSinceLogin = currentTime.diff(user.loginTime);
@@ -117,6 +118,28 @@ const showUsers = (users) => {
     usersContainer.innerHTML = html;
 };
 
+const addTypingUser = (nickname) => {
+    if (!typingUsers.includes(nickname)) {
+        typingUsers.push(nickname);
+    }
+    showTyping(typingUsers);
+};
+
+const showTyping = (typingUsers) => {
+    const html = typingUsers
+    .map((user) => {
+        return `
+        <div class="typing-user">
+            <span class="typing-user-nickname">@${user}</span>
+            <span class="typing-user-text">is typing...</span>
+        </div>
+    `
+    })
+    .join('');
+
+    typingUsersContainer.innerHTML = html;
+};
+
 const sendMessage = () => {
     const message = {
         sender: user.nickname,
@@ -134,6 +157,8 @@ messageInput.addEventListener('keydown', (event) => {
         event.preventDefault();
         sendMessage();
     }
+
+    socket.emit('typing', user.nickname);
 });
 
 const startChat = () => {
@@ -142,6 +167,7 @@ const startChat = () => {
     socket.on('message', addMessage);
     socket.on('users', showUsers);
     socket.on('history', showHistory);
+    socket.on('typing', addTypingUser);
 };
 
 const login = () => {
