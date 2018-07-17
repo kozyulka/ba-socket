@@ -19,6 +19,7 @@ app.post('/login', (req, res) => {
     const user = {
         name: req.body.name,
         nickname: req.body.nickname,
+        loginTime: req.body.loginTime
     };
 
     if (chatManager.isUserExisting(user)) {

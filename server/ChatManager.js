@@ -20,7 +20,7 @@ class ChatManager {
         this.users.push({
             name: user.name,
             nickname: user.nickname,
-            loginTime: Date.now(),
+            loginTime: user.loginTime,
             logoutTime: 0
         });
     }
