@@ -80,32 +80,26 @@ const showUsers = (users) => {
     const currentTime = moment();
     const html = users
         .map((user) => {
-            const timeSinceLogin = currentTime.diff(user.loginTime);
+            if (user.logoutTime) {
+                const timeSinceLogout= currentTime.diff(moment(user.logoutTime));
 
-            user.status = 'offline';
-
-            if (user.loginTime) {
-                user.status = 'online';
-            }
-
-            if ( timeSinceLogin < 60000) {
-                user.status = 'just appeared';
-            }
-
-            switch (user.status) {
-                case 'online':
-                    user.label = 'online';
-                    break;
-
-                case 'just appeared':
-                    user.label = 'appeared';
-                    break;
-
-                case 'just left':
+                if (timeSinceLogout < 60000) {
+                    user.status = 'just left';
                     user.label = 'left';
-                    break;
-                default:
+                } else {
+                    user.status = 'offline';
                     user.label = 'offline';
+                }
+            } else if (user.loginTime) {
+                const timeSinceLogin = currentTime.diff(moment(user.loginTime));
+
+                if ( timeSinceLogin < 60000) {
+                    user.status = 'just appeared';
+                    user.label = 'appeared';
+                } else {
+                    user.status = 'online';
+                    user.label = 'online';
+                }
             }
 
             return `
@@ -184,7 +178,9 @@ messageInput.addEventListener('keydown', (event) => {
 });
 
 const startChat = () => {
-    socket = io.connect();
+    socket = io.connect('', {
+        query: `nickname=${user.nickname}`,
+    });
 
     socket.on('message',(message) => {
         addMessage(message);
@@ -199,7 +195,7 @@ const login = () => {
     const data = {
         name: userNameInput.value,
         nickname: userNicknameInput.value,
-        loginTime: moment()
+        loginTime: Date.now(),
     };
 
     fetch('/login', {
@@ -227,4 +223,3 @@ const login = () => {
         startChat();
     });
 };
-

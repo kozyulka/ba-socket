@@ -40,6 +40,19 @@ class ChatManager {
     getMessages() {
         return this.messages;
     }
+
+    setUserLogoutTime(nickname) {
+        for (let index = 0; index < this.users.length; index++) {
+            const user = this.users[index];
+
+            if (user.nickname === nickname) {
+                user.logoutTime = Date.now();
+                user.loginTime = 0;
+
+                break;
+            }
+        }
+    }
 }
 
 module.exports = ChatManager;

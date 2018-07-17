@@ -34,6 +34,7 @@ app.post('/login', (req, res) => {
 io.on('connection', (socket) => {
     const users = chatManager.getUsers();
     const messages = chatManager.getMessages();
+    const nickname = socket.handshake.query.nickname;
 
     io.emit('users', users);
     io.emit('history', messages);
@@ -45,6 +46,14 @@ io.on('connection', (socket) => {
 
     socket.on('typing', (nickname) => {
         socket.broadcast.emit('typing', nickname);
+    });
+
+    socket.on('disconnect', () => {
+        chatManager.setUserLogoutTime(nickname);
+
+        const users = chatManager.getUsers();
+
+        socket.broadcast.emit('users', users);
     });
 });
 
