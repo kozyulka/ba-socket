@@ -52,14 +52,17 @@ main {
     flex: 1;
 }
 
-.chat-main {
+.chat-messages {
     width: 70%;
-
+    height: 600px;
+    overflow: auto;
 }
 
 .chat-users {
     width: 30%;
     border-right: 1px solid black;
+    overflow: auto;
+    height: 600px;
 }
 
 .chat-user {
@@ -159,13 +162,8 @@ main {
     font-size: 24px;
 }
 
-.typing-users {
-    height: 40px;
-}
-
 .typing-user {
-    padding-left: 20px;
-    padding-top: 10px;
+    margin: 10px auto 10px 20px;
     color: grey;
     font-style: italic;
 }

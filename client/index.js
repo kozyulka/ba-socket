@@ -13,6 +13,10 @@ let typingUsers = [];
 let currentTime = moment();
 let socket;
 
+const scrollToBottom = (div) => {
+    div.scrollTop = div.scrollHeight - div.clientHeight;
+}
+
 const addMessage = (messageData) => {
     const message = {
         text: messageData.text,
@@ -44,6 +48,8 @@ const showMessage = (message) => {
     `;
 
     messagesContainer.appendChild(element);
+
+    scrollToBottom(messagesContainer);
 };
 
 const showHistory = (messagesHistory) => {
@@ -116,6 +122,8 @@ const showUsers = (users) => {
         .join('');
 
     usersContainer.innerHTML = html;
+
+    scrollToBottom(usersContainer);
 };
 
 const addTypingUser = (nickname) => {
@@ -202,3 +210,4 @@ const login = () => {
         startChat();
     });
 };
+
