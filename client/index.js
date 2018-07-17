@@ -9,7 +9,6 @@ const userNicknameInput = document.getElementById('userNickname');
 const messages = [];
 const user = {};
 let typingUsers = [];
-let currentTime = moment();
 let socket;
 
 const scrollToBottom = (div) => {
@@ -78,6 +77,7 @@ const showHistory = (messagesHistory) => {
 };
 
 const showUsers = (users) => {
+    const currentTime = moment();
     const html = users
         .map((user) => {
             const timeSinceLogin = currentTime.diff(user.loginTime);
@@ -92,31 +92,34 @@ const showUsers = (users) => {
                 user.status = 'just appeared';
             }
 
-            switch(user.status) {
+            switch (user.status) {
                 case 'online':
-                user.label = 'online';
-                break;
+                    user.label = 'online';
+                    break;
 
                 case 'just appeared':
-                user.label = 'appeared';
-                break;
+                    user.label = 'appeared';
+                    break;
 
                 case 'just left':
-                user.label = 'left';
+                    user.label = 'left';
+                    break;
+                default:
+                    user.label = 'offline';
             }
 
             return `
-            <div class="chat-user">
-                <div class="chat-user-info">
-                    <div class="chat-user-info-name">${user.name}</div>
-                    <div class="chat-user-info-nickname">@${user.nickname}</div>
+                <div class="chat-user">
+                    <div class="chat-user-info">
+                        <div class="chat-user-info-name">${user.name}</div>
+                        <div class="chat-user-info-nickname">@${user.nickname}</div>
+                    </div>
+                    <div class="chat-user-label">
+                        <span class="chat-user-label-color ${user.label}"></span>
+                        <span class="chat-user-label-status">${user.status}</span>
+                    </div>
                 </div>
-                <div class="chat-user-label">
-                    <span class="chat-user-label-color ${user.label}"></span>
-                    <span class="chat-user-label-status">${user.status}</span>
-                </div>
-            </div>
-        `;
+            `;
         })
         .join('');
 
