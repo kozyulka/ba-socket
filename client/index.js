@@ -113,6 +113,7 @@ const startChat = () => {
 
     socket.on('message', addMessage);
     socket.on('users', showUsers);
+    socket.on('history', showHistory);
 };
 
 const login = () => {
