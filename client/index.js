@@ -20,11 +20,8 @@ const addMessage = (messageData) => {
     const message = {
         text: messageData.text,
         sender: messageData.sender,
-        time: moment(messageData.time).format("dddd, MMMM Do YYYY, h:mm:ss a"),
+        time: moment(messageData.time).format("ddd, MM/D/YY, HH:mm:ss"),
     };
-
-    console.log(messageData.time);
-
 
     messages.push(message);
     showMessage(message);
@@ -132,20 +129,31 @@ const addTypingUser = (nickname) => {
     if (!typingUsers.includes(nickname)) {
         typingUsers.push(nickname);
     }
-    showTyping(typingUsers);
+
+    showTyping();
 };
 
-const showTyping = (typingUsers) => {
+ const removeTypingUser = (nickname) => {
+    const index = typingUsers.indexOf(nickname);
+
+    if (index !== -1) {
+        typingUsers.splice(index, 1);
+    }
+
+    showTyping();
+ };
+
+const showTyping = () => {
     const html = typingUsers
-    .map((user) => {
-        return `
-        <div class="typing-user">
-            <span class="typing-user-nickname">@${user}</span>
-            <span class="typing-user-text">is typing...</span>
-        </div>
-    `
-    })
-    .join('');
+        .map((user) => {
+            return `
+            <div class="typing-user">
+                <span class="typing-user-nickname">@${user}</span>
+                <span class="typing-user-text">is typing...</span>
+            </div>
+        `
+        })
+        .join('');
 
     typingUsersContainer.innerHTML = html;
 };
@@ -175,7 +183,10 @@ messageInput.addEventListener('keydown', (event) => {
 const startChat = () => {
     socket = io.connect();
 
-    socket.on('message', addMessage);
+    socket.on('message',(message) => {
+        addMessage(message);
+        removeTypingUser(message.sender);
+    });
     socket.on('users', showUsers);
     socket.on('history', showHistory);
     socket.on('typing', addTypingUser);

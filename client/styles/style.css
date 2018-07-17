@@ -66,7 +66,6 @@ main {
     text-align: center;
 }
 
-
 .chat-messages {
     height: 498px;
     overflow: auto;
@@ -143,7 +142,7 @@ main {
 }
 
 .chat-message {
-    width: 400px;
+    width: 300px;
     background-color: #dcdada;
     border-radius: 5px;
     padding: 10px;
@@ -158,7 +157,7 @@ main {
 .chat-message-info {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px dashed #dcdbdb;
+    border-bottom: 1px dashed #6d6d6d;
     padding: 5px;
 }
 
